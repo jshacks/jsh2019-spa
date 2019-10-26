@@ -1,8 +1,8 @@
 {
-  "name": "promo-app",
+  "name": "spapp",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Promo App",
+  "productName": "SPApp",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Claudiu Harton <claudiu.harton@gmail.com>",
   "private": true,

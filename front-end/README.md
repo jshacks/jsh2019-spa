@@ -1,4 +1,4 @@
-# Promo App (promo-app)
+# SPApp (spapp)
 
 A Quasar Framework app
 

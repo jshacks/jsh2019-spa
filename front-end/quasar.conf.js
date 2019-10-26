@@ -42,7 +42,18 @@ module.exports = function(ctx) {
         "QList",
         "QItem",
         "QItemSection",
-        "QItemLabel"
+        "QItemLabel",
+        "QTabs",
+        "QTab",
+        "QRouteTab",
+        "QTabPanels",
+        "QTabPanel",
+        "QSeparator",
+        "QCardSection",
+        "QCard",
+        "QBtnDropdown",
+        "QSelect",
+        "QInput"
       ],
 
       directives: ["Ripple"],
@@ -90,8 +101,8 @@ module.exports = function(ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {}, // only for NON InjectManifest
       manifest: {
-        name: "Promo App",
-        short_name: "Promo App",
+        name: "SPApp",
+        short_name: "SPApp",
         description: "A Quasar Framework app",
         display: "standalone",
         orientation: "portrait",
@@ -153,7 +164,7 @@ module.exports = function(ctx) {
 
       builder: {
         // https://www.electron.build/configuration/configuration
-        // appId: 'promo-app'
+        // appId: 'spapp-app'
       }
     }
   };
