@@ -35,9 +35,6 @@
       border-bottom-left-radius: 30%;
       border-bottom-right-radius: 30%;
   }
-.items-center{
-  
-}
   /* 
     ##Device = Laptops, Desktops
     ##Screen = B/w 1025px to 1280px
