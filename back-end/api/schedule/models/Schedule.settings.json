@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "schedule",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "userId": {
+      "type": "string"
+    },
+    "activityId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "group",
+  "info": {
+    "name": "group",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "groupLeadId": {
+      "type": "string"
+    },
+    "seriesLeadId": {
+      "type": "string"
+    }
+  }
+}

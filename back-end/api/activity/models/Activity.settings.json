@@ -1,0 +1,56 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "activity",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "subjectId": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string"
+    },
+    "end": {
+      "type": "string"
+    },
+    "day": {
+      "enum": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ],
+      "type": "enumeration"
+    },
+    "attendance": {
+      "type": "integer",
+      "default": "0"
+    },
+    "classroom": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "s",
+        "c"
+      ],
+      "type": "enumeration"
+    },
+    "capacity": {
+      "type": "integer",
+      "default": "30"
+    },
+    "groupId": {
+      "type": "string"
+    },
+    "profId": {
+      "type": "string"
+    }
+  }
+}
