@@ -32,10 +32,23 @@
             </q-tabs>
           </q-card>
           <q-tab-panels v-model="tabInside" animated>
-            <q-tab-panel name="monday">
+            <q-tab-panel class="hour-slot" name="monday">
               <div class="container">
-                <div class="first-top"></div>
-                <div class="second-top"></div>
+                <div class="first-top">
+                  <p>{{subject}}</p>
+                  <div class="icons-area">
+                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                    <q-btn v-else outline round color="primary" disable label="S" />
+
+                    <q-btn round v-if="hasAssignement" outline disable label="A" />
+
+                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
+                  </div>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
               </div>
             </q-tab-panel>
 
@@ -63,7 +76,7 @@
   </q-page>
 </template>
 
-<style>
+<style scoped>
 .q-page {
   background-color: #fff;
 }
@@ -100,6 +113,59 @@
 .q-card > div {
   margin-top: 0;
 }
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding: 10px 20px;
+  color: #fff;
+
+  border-radius: 7px;
+}
+.first-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.second-top p {
+  margin: 0;
+  font-size: 14px;
+}
+.first-top p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.first-top,
+.second-top {
+  flex-basis: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hour-slot {
+  padding: 0;
+  margin-top: 30px;
+}
+.icons-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.q-btn {
+  padding: 0;
+}
+
+.q-btn,
+.q-icon {
+  font-size: 1.018em !important;
+}
 </style>
 
 <script>
@@ -111,7 +177,14 @@ export default {
   data() {
     return {
       tab: "groupSchedule",
-      tabInside: "monday"
+      tabInside: "monday",
+      subject: "POO",
+      timeSlot: "11:00 - 12:30",
+      classRoom: "2011A",
+      hasAssignement: true,
+      hourType: {
+        type: "curs"
+      }
     };
   },
   computed: {

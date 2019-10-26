@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header class="bg-primary text-whitev">
+    <q-header class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="absolute-center">SPA</q-toolbar-title>
         <q-btn
