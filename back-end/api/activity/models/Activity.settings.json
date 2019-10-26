@@ -28,7 +28,7 @@
       ],
       "type": "enumeration"
     },
-    "attendance": {
+    "minAttendence": {
       "type": "integer",
       "default": "0"
     },

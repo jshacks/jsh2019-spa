@@ -55,6 +55,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/group/schedule",
+      "handler": "Group.schedule",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

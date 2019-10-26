@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GEt",
+      "path": "/schedules/personal",
+      "handler": "Schedule.personal",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/schedules/:id",
       "handler": "Schedule.findOne",
