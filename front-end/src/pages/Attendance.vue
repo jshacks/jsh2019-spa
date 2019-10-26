@@ -45,8 +45,7 @@
       </q-tab-panels>
     </div>
     <div class="q-pa-md q-gutter-sm">
-      <q-btn class="BTN" color="white" text-color="black" label="Close" />
-      <q-btn class="Save" color="primary" label="Save" />
+      <q-btn class="Save" color="primary" label="Trimite" />
     </div>
   </q-page>
 </template>
