@@ -17,18 +17,7 @@
       >Nu mai faci parte din procesul de recrutare</q-banner
     >
 
-    <q-circular-progress
-      v-else
-      show-value
-      font-size="15vw"
-      :value="level"
-      size="60vw"
-      :thickness="0.22"
-      color="teal"
-      track-color="grey-3"
-      class="q-ma-md"
-      >{{ level }}%</q-circular-progress
-    >
+    
   </q-page>
 </template>
 

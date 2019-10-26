@@ -1,97 +1,94 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+
+    <q-header 
+   class="bg-primary text-whitev	">
       <q-toolbar>
-        <!-- <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
-          <q-icon name="menu" />
-        </q-btn>-->
-
-        <q-toolbar-title>Quasar App</q-toolbar-title>
-
-        <q-btn color="white" text-color="black" label="Logout" @click="$router.push('/login')" />
-      </q-toolbar>
+        <q-toolbar-title class=" absolute-center">
+          
+          SPA
+        </q-toolbar-title>
+         <q-btn class="absolute-right" round color="primary" icon="img:../assets/logout.png"   @click="$router.push('/login')" />
+     </q-toolbar>
     </q-header>
-
-    <!-- <q-drawer v-model="leftDrawerOpen" bordered content-class="bg-grey-2">
-      <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="code" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="record_voice_over" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://facebook.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="public" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Facebook</q-item-label>
-            <q-item-label caption>@QuasarFramework</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer>-->
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 
-<script>
-import { openURL } from "quasar";
 
-export default {
-  name: "MainLayout",
-  data() {
-    return {
-      // leftDrawerOpen: this.$q.platform.is.desktop
-    };
-  },
-  methods: {
-    openURL
+<style>
+  .q-toolbar__title{
+    z-index: -1;
+    text-align:center;
+    border-radius: 5%;
   }
-};
+
+  .fixed-top {
+      height: 10%;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-bottom-left-radius: 30%;
+      border-bottom-right-radius: 30%;
+  }
+.items-center{
+  
+}
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+  @media (min-width: 1025px)  {
+    
+    .fixed-top {
+      height: 10%;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-bottom-left-radius: 30%;
+      border-bottom-right-radius: 30%;
+  }
+
+    
+  }
+
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    
+    .fixed-top {
+      height: 7%;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-bottom-left-radius: 30%;
+      border-bottom-right-radius: 30%;
+  }
+
+    
+}
+
+
+
+
+
+</style>
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
 </script>
 
-<style></style>
+
+
