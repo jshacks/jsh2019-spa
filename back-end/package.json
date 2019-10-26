@@ -1,5 +1,5 @@
 {
-  "name": "spa",
+  "name": "back-end",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -11,24 +11,22 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "strapi": "3.0.0-beta.17.4",
-    "strapi-admin": "3.0.0-beta.17.4",
-    "strapi-utils": "3.0.0-beta.17.4",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.17.4",
-    "strapi-plugin-content-manager": "3.0.0-beta.17.4",
-    "strapi-plugin-users-permissions": "3.0.0-beta.17.4",
-    "strapi-plugin-email": "3.0.0-beta.17.4",
-    "strapi-plugin-upload": "3.0.0-beta.17.4",
-    "strapi-hook-bookshelf": "3.0.0-beta.17.4",
-    "strapi-hook-knex": "3.0.0-beta.17.4",
-    "knex": "latest",
-    "sqlite3": "latest"
+    "strapi": "3.0.0-beta.17.2",
+    "strapi-admin": "3.0.0-beta.17.2",
+    "strapi-utils": "3.0.0-beta.17.2",
+    "strapi-plugin-settings-manager": "3.0.0-beta.17.2",
+    "strapi-plugin-content-type-builder": "3.0.0-beta.17.2",
+    "strapi-plugin-content-manager": "3.0.0-beta.17.2",
+    "strapi-plugin-users-permissions": "3.0.0-beta.17.2",
+    "strapi-plugin-email": "3.0.0-beta.17.2",
+    "strapi-plugin-upload": "3.0.0-beta.17.2",
+    "strapi-hook-mongoose": "3.0.0-beta.17.2"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "30f17382-8e61-4d2e-ba0b-a863528878a8"
+    "uuid": "5e9c8d67-3c39-47d7-9253-c4eb3c54de4c"
   },
   "engines": {
     "node": ">=10.0.0",
