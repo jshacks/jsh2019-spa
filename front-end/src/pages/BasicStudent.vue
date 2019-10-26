@@ -99,6 +99,10 @@
 
 .q-slide-item {
   width: 100%;
+  border-radius: 7px;
+}
+.q-slide-item__content {
+  background: transparent;
 }
 .q-tabs {
   width: 100%;
