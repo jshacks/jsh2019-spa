@@ -26,6 +26,30 @@
     },
     {
       "method": "GET",
+      "path": "/activities/students/:activityId",
+      "handler": "Activity.getStudents",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/activities/attendence/:activityId/:userId",
+      "handler": "Activity.studentAttendence",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activities/prof",
+      "handler": "Activity.getProfActivities",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/activities/:id",
       "handler": "Activity.findOne",
       "config": {

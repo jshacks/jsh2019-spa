@@ -1,21 +1,18 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "activity",
   "info": {
     "name": "activity",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "subject": {
-      "type": "string"
-    },
-    "start": {
-      "type": "string"
-    },
-    "end": {
       "type": "string"
     },
     "day": {
@@ -49,8 +46,14 @@
     "groupId": {
       "type": "string"
     },
-    "profId": {
+    "prof": {
       "type": "string"
+    },
+    "start": {
+      "type": "decimal"
+    },
+    "end": {
+      "type": "decimal"
     }
   }
 }

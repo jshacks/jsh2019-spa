@@ -3,6 +3,8 @@
 /**
  * Read the documentation () to implement custom controller functions
  */
+const _ = require('lodash');
+const padEnd = require('../../group/services/Group').padEnd;
 
 module.exports = {
     personal: async (ctx) => {
@@ -17,9 +19,34 @@ module.exports = {
         })
 
         for(let i = 0; i < activities.length; i++) {
-            activities[i].activity = await Activity.find({_id: activities[i].activityId});
+            const activity = await Activity.findOne({_id: activities[i].activityId});
+            activities[i].subject = activity.subject; 
+            activities[i].minAttendence = activity.minAttendence; 
+            activities[i].type = activity.type;
+            activities[i].day = activity.day;
+            activities[i].start = activity.start;
+            activities[i].end = activity.end;
+            activities[i].prof = activity.prof;
         }
 
-        ctx.body = {activities: activities}
+        const sorted = _.sortBy(activities, ["start"])
+        const grouped = _.groupBy(sorted, function(ob) {
+            return ob.day;
+        });
+
+        Object.keys(grouped).map(day => {
+            grouped[day].forEach(activity => {
+                activity.start = padEnd(activity.start)
+                activity.end = padEnd(activity.end);
+            })
+        })
+
+        ctx.body = {activities: grouped}
+    },
+    create: async (ctx) => {
+        //incomplete
+        await Schedule.destroy({userId: ctx.state.user._id});
+
+        
     }
 };

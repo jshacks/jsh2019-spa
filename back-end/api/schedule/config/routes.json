@@ -17,9 +17,17 @@
       }
     },
     {
-      "method": "GEt",
+      "method": "GET",
       "path": "/schedules/personal",
       "handler": "Schedule.personal",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/schedules/create",
+      "handler": "Schedule.create",
       "config": {
         "policies": []
       }

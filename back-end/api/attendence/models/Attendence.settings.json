@@ -1,12 +1,15 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "attendence",
   "info": {
     "name": "attendence",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "userId": {
@@ -16,6 +19,9 @@
       "type": "string"
     },
     "profId": {
+      "type": "string"
+    },
+    "activityId": {
       "type": "string"
     }
   }

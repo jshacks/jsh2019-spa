@@ -3,6 +3,8 @@
 /**
  * Read the documentation () to implement custom controller functions
  */
+const _ = require('lodash');
+const padEnd = require("../services/Group").padEnd;
 
 module.exports = {
     personal: async (ctx) => {
@@ -20,8 +22,20 @@ module.exports = {
         const activities = groupActivities.map(activity => {
             const attendence = attendences.filter(attendence => attendence.subject === activity.subject).length;
             return {...activity._doc, attendence: attendence};
+        });
+
+        const sorted = _.sortBy(activities, ["start"])
+        const grouped = _.groupBy(sorted, function(ob) {
+            return ob.day;
+        });
+
+        Object.keys(grouped).map(day => {
+            grouped[day].forEach(activity => {
+                activity.start = padEnd(activity.start);
+                activity.end = padEnd(activity.end);
+            })
         })
 
-        ctx.body = {activities: activities}
+        ctx.body = {activities: grouped}
     }
 };
