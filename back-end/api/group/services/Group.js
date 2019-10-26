@@ -7,8 +7,7 @@
 module.exports = {
     padEnd: (number) => {
         let str = number.toString();
-        console.log(str);
-        
+
         switch(str.length) {
             case 1: 
                 str = str + "0:00";

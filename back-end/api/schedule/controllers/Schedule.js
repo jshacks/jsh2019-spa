@@ -44,9 +44,19 @@ module.exports = {
         ctx.body = {activities: grouped}
     },
     create: async (ctx) => {
-        //incomplete
-        await Schedule.destroy({userId: ctx.state.user._id});
-
+        await Schedule.deleteMany({userId: ctx.state.user._id});
         
+        if(ctx.request.body.activities && Array.isArray(ctx.request.body.activities)) {
+            const activities = [];
+            ctx.request.body.activities.forEach(activity => {
+                activities.push({userId: ctx.state.user._id, activityId: activity});
+            })
+            await Schedule.create(activities);
+            ctx.body = {message: "Updated"};
+        } else {
+            ctx.status = 400;
+            ctx.body = {message: "Bad Request"};
+            return;
+        }
     }
 };
