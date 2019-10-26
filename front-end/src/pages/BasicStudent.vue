@@ -33,7 +33,10 @@
           </q-card>
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel name="monday">
-              <div class="text-h6">monday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="container">
+                <div class="first-top"></div>
+                <div class="second-top"></div>
+              </div>
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">
@@ -50,9 +53,6 @@
               <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
           </q-tab-panels>
-          <!-- <q-card class="my-card">
-            <q-card-section>{{ lorem }}</q-card-section>
-          </q-card>-->
         </div>
       </q-tab-panel>
 
