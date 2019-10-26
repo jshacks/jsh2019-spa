@@ -21,10 +21,15 @@
 
 
 <style>
+  .q-btn{
+    box-shadow: none;
+    padding-right: 5%;
+  }
   .q-toolbar__title{
     z-index: -1;
     text-align:center;
     border-radius: 5%;
+    font-size: 2em;
   }
 
   .fixed-top {
@@ -34,6 +39,9 @@
       right: 0;
       border-bottom-left-radius: 30%;
       border-bottom-right-radius: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
   }
   /* 
     ##Device = Laptops, Desktops
@@ -68,6 +76,7 @@
       right: 0;
       border-bottom-left-radius: 30%;
       border-bottom-right-radius: 30%;
+      
   }
 
     
