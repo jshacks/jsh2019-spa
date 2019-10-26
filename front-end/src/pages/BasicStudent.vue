@@ -1,39 +1,46 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-circular-progress
-      v-if="!loaded"
-      indeterminate
-      size="40vw"
-      :thickness="0.22"
-      color="teal"
-      track-color="grey-3"
-      class="q-ma-md"
-    />
-    <q-banner
-      v-else-if="!status && loaded"
-      class="bg-grey-3"
-    >Nu mai faci parte din procesul de recrutare</q-banner>
-    <q-circular-progress
-      v-else
-      show-value
-      font-size="15vw"
-      :value="level"
-      size="60vw"
-      :thickness="0.22"
-      color="teal"
-      track-color="grey-3"
-      class="q-ma-md"
-    >{{level }}%</q-circular-progress>
+  <q-page>
+    <q-tabs
+      v-model="tab"
+      class="text-grey"
+      active-color="primary"
+      indicator-color="primary"
+      align="justify"
+      narrow-indicator
+    >
+      <q-tab name="mails" label="Mails" />
+      <q-tab name="alarms" label="Alarms" />
+    </q-tabs>
+
+    <q-tab-panels v-model="tab" animated>
+      <q-tab-panel name="mails">
+        <div class="text-h6">Mails</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+
+      <q-tab-panel name="alarms">
+        <div class="text-h6">Alarms</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+    </q-tab-panels>
   </q-page>
 </template>
 
-<style></style>
+<style>
+.q-tabs {
+  width: 100%;
+  margin-top: 10px;
+}
+</style>
 
 <script>
 export default {
   name: "PageIndex",
   mounted() {
     this.$store.dispatch("promoData/initStore");
+  },
+  data() {
+    return {
+      tab: "mails"
+    };
   },
   computed: {
     level() {

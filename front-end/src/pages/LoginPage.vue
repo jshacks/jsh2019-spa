@@ -20,33 +20,15 @@
 
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="one">
-              <q-input
-                standout="bg-light-blue-8   text-white"
-                v-model="password"
-                type="password"
-                label="Password"
-              />
-              <q-input
-                standout="bg-light-blue-8    text-white"
-                v-model="email"
-                type="email"
-                label="Email"
-              />
+              <q-input v-model="password" type="password" label="Password" />
+              <q-input v-model="email" type="email" label="Email" />
+              <q-btn color="primary" label="Log In" />
             </q-tab-panel>
 
             <q-tab-panel name="two">
-              <q-input
-                standout="bg-light-blue-8   text-white"
-                v-model="password"
-                type="password"
-                label="Password"
-              />
-              <q-input
-                standout="bg-light-blue-8    text-white"
-                v-model="email"
-                type="email"
-                label="Email"
-              />
+              <q-input v-model="password" type="password" label="Password" />
+              <q-input v-model="email" type="email" label="Email" />
+              <q-btn color="primary" label="Sign Up" />
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
@@ -98,6 +80,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.q-field {
+  margin-bottom: 10px;
 }
 
 .q-field--standout .q-field__control {
