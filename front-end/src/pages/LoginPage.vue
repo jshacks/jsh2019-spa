@@ -7,9 +7,10 @@
       </div>
       <div class="login-area">
         <q-card class="login-card">
-          <q-card-section>
-            <div class="text-h6">Our Changing Planet</div>
-            <img src="../assets/background.svg" />
+          <q-card-section class="card-section">
+            <div class="img-center">
+              <img src="../assets/sad.svg" />
+            </div>
           </q-card-section>
 
           <q-tabs v-model="tab">
@@ -17,17 +18,35 @@
             <q-tab label="Sign Up" name="two" />
           </q-tabs>
 
-          <q-separator />
-
           <q-tab-panels v-model="tab" animated>
-            <q-tab-panel
-              name="one"
-            >The QCard component is a great way to display important pieces of grouped content.</q-tab-panel>
+            <q-tab-panel name="one">
+              <q-input
+                standout="bg-light-blue-8   text-white"
+                v-model="password"
+                type="password"
+                label="Password"
+              />
+              <q-input
+                standout="bg-light-blue-8    text-white"
+                v-model="email"
+                type="email"
+                label="Email"
+              />
+            </q-tab-panel>
 
             <q-tab-panel name="two">
-              With so much content to display at once, and often so little screen real-estate,
-              Cards have fast become the design pattern of choice for many companies, including
-              the likes of Google and Twitter.
+              <q-input
+                standout="bg-light-blue-8   text-white"
+                v-model="password"
+                type="password"
+                label="Password"
+              />
+              <q-input
+                standout="bg-light-blue-8    text-white"
+                v-model="email"
+                type="email"
+                label="Email"
+              />
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
@@ -61,12 +80,36 @@
 }
 .login-card {
   width: 100%;
+  max-width: 300px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   padding: 2vh;
   width: 25vw;
   background-color: #f5f5f5;
+}
+
+.q-tab-panel {
+  background-color: #f5f5f5;
+}
+
+.card-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.q-field--standout .q-field__control {
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 700px) {
+  .description-area {
+    display: none;
+  }
+  .login-card {
+    width: 90%;
+  }
 }
 </style>
 
@@ -75,7 +118,9 @@ export default {
   name: "LoginPage",
   data() {
     return {
-      tab: "one"
+      tab: "one",
+      password: "",
+      email: ""
     };
   }
 };

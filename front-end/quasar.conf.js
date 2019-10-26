@@ -50,7 +50,8 @@ module.exports = function(ctx) {
         "QTabPanel",
         "QSeparator",
         "QCardSection",
-        "QCard"
+        "QCard",
+        "QInput"
       ],
 
       directives: ["Ripple"],
