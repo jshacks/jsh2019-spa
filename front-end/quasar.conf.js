@@ -51,6 +51,8 @@ module.exports = function(ctx) {
         "QSeparator",
         "QCardSection",
         "QCard",
+        "QBtnDropdown",
+        "QSelect",
         "QInput"
       ],
 
