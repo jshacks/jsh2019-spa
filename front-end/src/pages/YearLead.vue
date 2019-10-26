@@ -9,26 +9,49 @@
       track-color="grey-3"
       class="q-ma-md"
     />
+` <div class="year-card">
 
-    <q-banner
-      v-else-if="!status && loaded"
-      inline-actions
-      class="text-white bg-red"
-      >Nu mai faci parte din procesul de recrutare</q-banner
-    >
 
-    
+          <q-tabs v-model="tab">
+            <q-tab label="Sign In" name="one" />
+            <q-tab label="Sign Up" name="two" />
+          </q-tabs>
+
+
+          <q-tab-panels v-model="tab" animated>
+            <q-tab-panel
+              name="one"
+            >The QCard component is a great way to display important pieces of grouped content.</q-tab-panel>
+
+            <q-tab-panel name="two">
+              With so much content to display at once, and often so little screen real-estate,
+              Cards have fast become the design pattern of choice for many companies, including
+              the likes of Google and Twitter.
+            </q-tab-panel>
+          </q-tab-panels>
+      </div>`
   </q-page>
 </template>
 
-<style></style>
+<style>
+
+.year-card {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  padding: 2vh;
+  width: 25vw;
+  background-color: #f5f5f5;
+}
+</style>
 
 <script>
 export default {
   name: "MainPage",
   data() {
     return {
-      // value: 81
+      tab: "one"
     };
   },
   mounted() {
