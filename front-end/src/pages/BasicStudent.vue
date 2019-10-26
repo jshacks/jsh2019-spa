@@ -40,6 +40,14 @@
                     <p>{{professor}}</p>
                     <p>{{timeSlot}}</p>
                     <p>{{classRoom}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
                   </div>
                 </template>
                 <div class="container">
@@ -222,7 +230,8 @@ export default {
       professor: "Smeureanu Ion",
       hourType: {
         type: "curs"
-      }
+      },
+      reset: {}
     };
   },
   computed: {
@@ -237,16 +246,15 @@ export default {
     }
   },
   methods: {
+    back() {
+      this.reset();
+    },
     onLeft({ reset }) {
       this.finalize(reset);
     },
 
-    onRight({ reset }) {},
-
-    finalize(reset) {
-      this.timer = setTimeout(() => {
-        reset();
-      }, 1000);
+    onRight({ reset }) {
+      this.reset = reset;
     }
   }
 };
