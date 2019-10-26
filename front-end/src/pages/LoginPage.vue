@@ -37,7 +37,7 @@
   </q-page>
 </template>
 
-<style>
+<style scoped>
 .container {
   width: 100vw;
   height: 100vh;

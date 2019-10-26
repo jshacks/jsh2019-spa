@@ -15,11 +15,10 @@
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="groupSchedule">
         <div class="schedule-slot">
-          <q-card>
+          <q-card class="my-card">
             <q-tabs
               v-model="tabInside"
-              dense
-              class="text-grey"
+              class="text-grey week-tabs"
               active-color="primary"
               indicator-color="primary"
               align="justify"
@@ -31,29 +30,42 @@
               <q-tab name="thursday" label="J" />
               <q-tab name="friday" label="V" />
             </q-tabs>
-
-            <q-separator />
-
-            <q-tab-panels v-model="tabInside" animated>
-              <q-tab-panel name="monday">
-                <div class="text-h6">monday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-
-              <q-tab-panel name="tuesday">
-                <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-
-              <q-tab-panel name="wednesday">
-                <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-              <q-tab-panel name="thursday">
-                <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-              <q-tab-panel name="friday">
-                <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-            </q-tab-panels>
           </q-card>
+          <q-tab-panels v-model="tabInside" animated>
+            <q-tab-panel class="hour-slot" name="monday">
+              <div class="container">
+                <div class="first-top">
+                  <p>{{subject}}</p>
+                  <div class="icons-area">
+                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                    <q-btn v-else outline round color="primary" disable label="S" />
+
+                    <q-btn round v-if="hasAssignement" outline disable label="A" />
+
+                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
+                  </div>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-tab-panel>
+
+            <q-tab-panel name="tuesday">
+              <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+
+            <q-tab-panel name="wednesday">
+              <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+            <q-tab-panel name="thursday">
+              <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+            <q-tab-panel name="friday">
+              <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+          </q-tab-panels>
         </div>
       </q-tab-panel>
 
@@ -64,18 +76,95 @@
   </q-page>
 </template>
 
-<style>
+<style scoped>
+.q-page {
+  background-color: #fff;
+}
 .q-tabs {
   width: 100%;
   margin-top: 10px;
 }
+.q-tab {
+  padding: 0 10px;
+}
+
+.q-tab-panel {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
 .q-card {
   width: 100%;
+  margin-bottom: 1px;
 }
 .schedule-slot {
   width: 90%;
   border-radius: 5%;
   background-color: #f5f5f5;
+}
+
+.my-card {
+  width: 100%;
+  /* background: black; */
+}
+.q-card > div {
+  margin-top: 0;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding: 10px 20px;
+  color: #fff;
+
+  border-radius: 7px;
+}
+.first-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.second-top p {
+  margin: 0;
+  font-size: 14px;
+}
+.first-top p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.first-top,
+.second-top {
+  flex-basis: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hour-slot {
+  padding: 0;
+  margin-top: 30px;
+}
+.icons-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.q-btn {
+  padding: 0;
+}
+
+.q-btn,
+.q-icon {
+  font-size: 1.018em !important;
 }
 </style>
 
@@ -88,7 +177,14 @@ export default {
   data() {
     return {
       tab: "groupSchedule",
-      tabInside: "mails"
+      tabInside: "monday",
+      subject: "POO",
+      timeSlot: "11:00 - 12:30",
+      classRoom: "2011A",
+      hasAssignement: true,
+      hourType: {
+        type: "curs"
+      }
     };
   },
   computed: {
