@@ -22,6 +22,7 @@
 
 <style>
 .q-btn {
+  cursor: pointer;
   box-shadow: none;
   padding-right: 5%;
 }

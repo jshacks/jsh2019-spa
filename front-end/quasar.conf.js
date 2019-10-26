@@ -54,7 +54,8 @@ module.exports = function(ctx) {
         "QCard",
         "QBtnDropdown",
         "QSelect",
-        "QInput"
+        "QInput",
+        "QSlideItem"
       ],
 
       directives: ["Ripple"],
