@@ -33,23 +33,39 @@
           </q-card>
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
-              <div class="container">
-                <div class="first-top">
-                  <p>{{subject}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
+              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
+                <template v-slot:right>
+                  <div class="more-info">
+                    <p>{{subject}}</p>
+                    <p>{{professor}}</p>
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{subject}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
 
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
+                      <q-btn round v-if="hasAssignement" outline disable label="A" />
 
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
                   </div>
                 </div>
-                <div class="second-top">
-                  <p>{{timeSlot}}</p>
-                  <p>{{classRoom}}</p>
-                </div>
-              </div>
+              </q-slide-item>
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">
@@ -79,6 +95,10 @@
 <style scoped>
 .q-page {
   background-color: #fff;
+}
+
+.q-slide-item {
+  width: 100%;
 }
 .q-tabs {
   width: 100%;
@@ -166,6 +186,19 @@
 .q-icon {
   font-size: 1.018em !important;
 }
+
+.more-info {
+  color: #2c2c2c;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.more-info p {
+  margin: 0;
+  margin-bottom: 3px;
+  width: 100%;
+}
 </style>
 
 <script>
@@ -182,6 +215,7 @@ export default {
       timeSlot: "11:00 - 12:30",
       classRoom: "2011A",
       hasAssignement: true,
+      professor: "Smeureanu Ion",
       hourType: {
         type: "curs"
       }
@@ -196,6 +230,19 @@ export default {
     },
     loaded() {
       return this.$store.getters["promoData/getLoaded"];
+    }
+  },
+  methods: {
+    onLeft({ reset }) {
+      this.finalize(reset);
+    },
+
+    onRight({ reset }) {},
+
+    finalize(reset) {
+      this.timer = setTimeout(() => {
+        reset();
+      }, 1000);
     }
   }
 };
