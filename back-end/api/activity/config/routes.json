@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/activities/subject",
+      "handler": "Activity.activitiesPerSubject",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/activities/:id",
       "handler": "Activity.findOne",
       "config": {

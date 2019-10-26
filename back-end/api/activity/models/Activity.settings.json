@@ -9,7 +9,7 @@
     "timestamps": true
   },
   "attributes": {
-    "subjectId": {
+    "subject": {
       "type": "string"
     },
     "start": {
