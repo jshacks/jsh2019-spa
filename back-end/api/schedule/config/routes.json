@@ -26,6 +26,14 @@
     },
     {
       "method": "POST",
+      "path": "/schedules/initialize",
+      "handler": "Schedule.initialize",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/schedules/create",
       "handler": "Schedule.create",
       "config": {
@@ -33,7 +41,7 @@
       }
     },
     {
-      "method": "GET",
+      "method": "POST",
       "path": "/schedules/generate",
       "handler": "Schedule.generate",
       "config": {

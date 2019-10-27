@@ -5,6 +5,8 @@
  */
 const _ = require('lodash');
 const padEnd = require('../../group/services/Group').padEnd;
+const findSuitableActivities = require('../services/Schedule').findSuitableActivities;
+const isConflictant = require('../services/Schedule').isConflictant;
 
 module.exports = {
     personal: async (ctx) => {
@@ -59,7 +61,57 @@ module.exports = {
             return;
         }
     },
+    initialize: async (ctx) => {
+        const schedules = await Schedule.find();
+        const studentsWithSchedules = new Set(schedules.map(schedule => schedule.userId));
+
+        //nin doesnt work...
+        const students = await strapi.plugins["users-permissions"].models.user.find({
+            type: {
+                $in: ["stud", "groupLead", "seriesLead"]
+            }
+        });
+
+        const studentsWithoutSchedules = students.filter(student => !studentsWithSchedules.has(student.id));
+
+        for(let i = 0; i < studentsWithoutSchedules.length; i++) {
+            const groupActivities = await Activity.find({groupId: studentsWithoutSchedules[i].groupId});
+            const groupSchedules = groupActivities.map(activity => {
+                return {userId: studentsWithoutSchedules[i].id, activityId: activity.id}
+            });
+            await Schedule.create(groupSchedules);
+        }
+
+        ctx.status = 201
+        ctx.body = {message: "Updated"}
+    },
     generate: async (ctx) => {
-        ctx.body = "yas"
+        const busy = ctx.request.body.busy.map(day => {
+            return {start: parseFloat(day.start.replace(":", ".")), end: parseFloat(day.end.replace(":", "."))};
+        });
+
+        const groupActivities = await Activity.find({groupId: ctx.state.user.groupId});
+        const groupActivitiesWithoutConflicts = findSuitableActivities(groupActivities, busy);
+        const groupActivitiesWithConflicts = groupActivities.filter(activity => !groupActivitiesWithoutConflicts.includes(activity));
+        const finalActivities = groupActivities;
+
+        for(let i = 0; i < groupActivities.length; i++) {
+            if(groupActivitiesWithConflicts.includes(groupActivities[i])) {
+                const similarActivities = await Activity.find({
+                    type: groupActivities[i].type,
+                    subject: groupActivities[i].subject
+                });
+
+                const suitableActivities = findSuitableActivities(similarActivities, busy);
+                
+                for(let j = 0; j < suitableActivities; j++) {
+                    if(!isConflictant(finalActivities, suitableActivities[j])) {
+                        finalActivities[i] = suitableActivities[j];
+                    }
+                }
+            }
+        }
+
+        ctx.body = { schedule: finalActivities };
     }
 };
