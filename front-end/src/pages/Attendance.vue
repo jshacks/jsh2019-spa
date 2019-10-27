@@ -36,6 +36,9 @@
               </q-slide-item>
             </q-list>
           </div>
+          <div class="q-pa-md q-gutter-sm">
+            <q-btn class="Save" color="primary" label="Trimite" />
+          </div>
         </q-tab-panel>
         <q-tab-panel name="two">
           With so much content to display at once, and often so little screen real-estate,
@@ -44,9 +47,7 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
-    <div class="q-pa-md q-gutter-sm">
-      <q-btn class="Save" color="primary" label="Trimite" />
-    </div>
+    
   </q-page>
 </template>
 

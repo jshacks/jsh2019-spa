@@ -33,7 +33,51 @@
           </q-card>
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
+              <q-slide-item
+                class="schedule_tab"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template v-slot:right>
+                  <div class="more-info">
+                    <p>{{subject}}</p>
+                    <p>{{professor}}</p>
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{subject}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+
+              <q-slide-item
+                class="schedule_tab"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
                 <template v-slot:right>
                   <div class="more-info">
                     <p>{{subject}}</p>
@@ -93,6 +137,9 @@
 </template>
 
 <style scoped>
+.schedule_tab {
+  margin-bottom: 3%;
+}
 .q-page {
   background-color: #fff;
 }
@@ -140,7 +187,7 @@
 .container {
   width: 100%;
   height: 100%;
-  background-color: brown;
+  background-color: #3b1600;
   display: flex;
   flex-direction: column;
   padding: 0;
