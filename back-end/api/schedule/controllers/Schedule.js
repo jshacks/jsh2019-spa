@@ -7,6 +7,8 @@ const _ = require('lodash');
 const padEnd = require('../../group/services/Group').padEnd;
 const findSuitableActivities = require('../services/Schedule').findSuitableActivities;
 const isConflictant = require('../services/Schedule').isConflictant;
+const sortByDay = require('../../activity/services/Activity').sortByDay;
+const mapDto = require('../../activity/services/Activity').mapDto;
 
 module.exports = {
     personal: async (ctx) => {
@@ -112,6 +114,26 @@ module.exports = {
             }
         }
 
-        ctx.body = { schedule: finalActivities };
+        const mapper = mapDto(finalActivities)
+        const sorted = _.sortBy(mapper, ["start"]);
+        sorted.sort(sortByDay);
+        const grouped = _.groupBy(sorted, function(ob) {
+            return ob.subject;
+        });
+
+        Object.keys(grouped).map(day => {
+            grouped[day].forEach(activity => {
+                activity.start = padEnd(activity.start)
+                activity.end = padEnd(activity.end);
+            })
+        });
+
+        _.forEach(grouped, (value, key) => {
+            grouped[key] = _.groupBy(grouped[key], (item) => {
+                return item.type;
+            })
+        })
+
+        ctx.body = { schedule: grouped };
     }
 };

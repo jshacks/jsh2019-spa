@@ -43,7 +43,6 @@ module.exports = {
 
         _.forEach(grouped, (value, key) => {
             grouped[key] = _.groupBy(grouped[key], (item) => {
-                console.log(item);
                 return item.type;
             })
         })
