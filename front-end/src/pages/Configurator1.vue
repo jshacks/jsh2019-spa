@@ -233,6 +233,7 @@
               <div class="container">
                 <div class="first-top">
                   <p>{{shortName}}</p>
+                  <p>{{professor}}</p>
                   <div class="icons-area">
                     <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
                     <q-btn v-else outline round color="primary" disable label="S" />
@@ -251,8 +252,49 @@
           </q-expansion-item>
         </q-tab-panel>
 
-        <q-tab-panel name="personalSchedule">
-          <div class="text-h6">Alarms</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-tab-panel name="chooseSchedule">
+          <q-expansion-item expand-separator :label="shortName">
+            <q-slide-item>
+              <template style="width: 100%;" v-slot:right>
+                <div class="row items-center">
+                  <div style="margin-right: 10px; font-weight:bold;">
+                    <p>{{subject}}</p>
+                    <p>{{shortName}}</p>
+                  </div>
+                  <div style="margin-right: 15px; ">
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
+                  </div>
+                  <p>{{professor}}</p>
+                  <q-btn
+                    @click="back"
+                    flat
+                    round
+                    color="white"
+                    style="padding: 0"
+                    icon="keyboard_arrow_left"
+                  />
+                </div>
+              </template>
+              <div class="container">
+                <div class="first-top">
+                  <p>{{shortName}}</p>
+                  <div class="icons-area">
+                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                    <q-btn v-else outline round color="primary" disable label="S" />
+
+                    <q-btn round v-if="hasAssignement" outline disable label="A" />
+
+                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
+                  </div>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -386,6 +428,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.q-tab-panels {
+  background: #fff;
+  width: 100%;
 }
 </style>
 
