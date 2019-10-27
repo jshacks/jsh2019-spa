@@ -45,7 +45,7 @@
       </q-tab-panels>
     </div>
     <div class="q-pa-md q-gutter-sm">
-      <q-btn class="Save" color="primary" label="Trimite" />
+      <q-btn class="Save" @click="handleSend" color="primary" label="Trimite" />
     </div>
   </q-page>
 </template>
@@ -92,6 +92,28 @@ export default {
         { name: "Aaaaaa Bbbbbb", present: 0 },
         { name: "Aaaaaa Bbbbbb", present: 0 },
         { name: "Aaaaaa Bbbbbb", present: 0 }
+      ],
+      seriesLeads: [
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        }
       ]
     };
   },
@@ -131,7 +153,8 @@ export default {
       this.timer = setTimeout(() => {
         reset();
       }, 500);
-    }
+    },
+    handleSend() {}
   },
 
   beforeDestroy() {
