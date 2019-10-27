@@ -31,7 +31,7 @@
 
                     <q-icon v-else right size="xl" color="red" name="block" />
                   </q-item-section>
-                  <q-item-section>Zamfirescu Teodor</q-item-section>
+                  <q-item-section>{{item.name}}</q-item-section>
                 </q-item>
               </q-slide-item>
             </q-list>
@@ -97,17 +97,17 @@ export default {
     return {
       tab: "one",
       users: [
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 },
-        { name: "Aaaaaa Bbbbbb", present: 0 }
+        { name: "Bogdan Osmochescu", present: 0 },
+        { name: "Jeni Blerinca", present: 0 },
+        { name: "Calin Suciu", present: 0 },
+        { name: "Afina Dragan", present: 0 },
+        { name: "Martin Bucsa", present: 0 },
+        { name: "Marin Lazar", present: 0 },
+        { name: "Adam Leonte", present: 0 },
+        { name: "Ana Pop", present: 0 },
+        { name: "Tudor Nemes", present: 0 },
+        { name: "Petru Enescu", present: 0 },
+        { name: "Victor Vasilescu", present: 0 }
       ],
       isSend: false,
       seriesLeads: [

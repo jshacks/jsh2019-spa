@@ -9,13 +9,13 @@
         <q-card class="login-card">
           <q-card-section class="card-section">
             <div class="img-center">
-              <img src="../assets/sad.svg" />
+              <img style="width:100px; height: 100px; background" src="../assets/logo1.png" />
             </div>
           </q-card-section>
 
           <q-tabs v-model="tab">
-            <q-tab label="Sign In" name="one" />
-            <q-tab label="Sign Up" name="two" />
+            <q-tab label="Sign In" style="color: white;" name="one" />
+            <q-tab label="Sign Up" style="color: white;" name="two" />
           </q-tabs>
 
           <q-tab-panels v-model="tab" animated>
@@ -68,7 +68,7 @@
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   padding: 2vh;
   width: 25vw;
-  background-color: #f5f5f5;
+  background-color: #018787;
 }
 
 .q-tab-panel {
@@ -89,6 +89,7 @@
 .q-field--standout .q-field__control {
   margin-bottom: 10px;
 }
+
 @media only screen and (max-width: 700px) {
   .description-area {
     display: none;

@@ -34,56 +34,23 @@
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
               <q-slide-item
-                class="schedule_tab"
+                v-for="(item,index) in group.luni"
+                :key="index"
                 @left="onLeft"
                 @right="onRight"
                 right-color="deep-orange-3 "
               >
-                <template v-slot:right>
-                  <div class="more-info">
-                    <p>{{subject}}</p>
-                    <p>{{professor}}</p>
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                </template>
-                <div class="container">
-                  <div class="first-top">
-                    <p>{{subject}}</p>
-                    <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                      <q-btn v-else outline round color="primary" disable label="S" />
-
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                      <q-btn
-                        flat
-                        round
-                        color="white"
-                        style="padding: 0"
-                        icon="keyboard_arrow_right"
-                      />
-                    </div>
-                  </div>
-                  <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                </div>
-              </q-slide-item>
-
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
                 <template style="width: 100%;" v-slot:right>
                   <div class="row items-center">
                     <div style="margin-right: 10px; font-weight:bold;">
-                      <p>{{subject}}</p>
-                      <p>{{shortName}}</p>
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
                     </div>
                     <div style="margin-right: 15px; ">
-                      <p>{{timeSlot}}</p>
-                      <p>{{classRoom}}</p>
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
                     </div>
-                    <p>{{professor}}</p>
+                    <p>{{item.professor}}</p>
                     <q-btn
                       @click="back"
                       flat
@@ -96,12 +63,12 @@
                 </template>
                 <div class="container">
                   <div class="first-top">
-                    <p>{{shortName}}</p>
+                    <p>{{item.shortName}}</p>
                     <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
                       <q-btn v-else outline round color="primary" disable label="S" />
 
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
 
                       <q-btn
                         flat
@@ -113,23 +80,31 @@
                     </div>
                   </div>
                   <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
                   </div>
                 </div>
               </q-slide-item>
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
+            </q-tab-panel>
+            <q-tab-panel class="hour-slot" name="tuesday">
+              <q-slide-item
+                v-for="(item,index) in group.marti"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
                 <template style="width: 100%;" v-slot:right>
                   <div class="row items-center">
                     <div style="margin-right: 10px; font-weight:bold;">
-                      <p>{{subject}}</p>
-                      <p>{{shortName}}</p>
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
                     </div>
                     <div style="margin-right: 15px; ">
-                      <p>{{timeSlot}}</p>
-                      <p>{{classRoom}}</p>
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
                     </div>
-                    <p>{{professor}}</p>
+                    <p>{{item.professor}}</p>
                     <q-btn
                       @click="back"
                       flat
@@ -142,12 +117,12 @@
                 </template>
                 <div class="container">
                   <div class="first-top">
-                    <p>{{shortName}}</p>
+                    <p>{{item.shortName}}</p>
                     <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
                       <q-btn v-else outline round color="primary" disable label="S" />
 
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
 
                       <q-btn
                         flat
@@ -159,47 +134,514 @@
                     </div>
                   </div>
                   <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+            <q-tab-panel class="hour-slot" name="wednesday">
+              <q-slide-item
+                v-for="(item,index) in group.miercuri"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+
+            <q-tab-panel class="hour-slot" name="friday">
+              <q-slide-item
+                v-for="(item,index) in group.vineri"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+
+            <q-tab-panel class="hour-slot" name="thursday">
+              <q-slide-item
+                v-for="(item,index) in group.joi"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
                   </div>
                 </div>
               </q-slide-item>
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">
-              <div class="text-h6">tuesday</div>
+              <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
 
             <q-tab-panel name="wednesday">
-              <div class="text-h6">wednesday</div>
+              <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
             <q-tab-panel name="thursday">
-              <div class="text-h6">thursday</div>
+              <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
             <q-tab-panel name="friday">
-              <div class="text-h6">friday</div>
+              <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
           </q-tab-panels>
         </div>
       </q-tab-panel>
 
       <q-tab-panel name="personalSchedule">
-        <div class="text-h6">Alarms</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <div class="schedule-slot">
+          <q-card class="my-card">
+            <q-tabs
+              v-model="tabInside"
+              class="text-grey week-tabs"
+              active-color="primary"
+              indicator-color="primary"
+              align="justify"
+              narrow-indicator
+            >
+              <q-tab name="monday" label="L" />
+              <q-tab name="tuesday" label="M" />
+              <q-tab name="wednesday" label="M" />
+              <q-tab name="thursday" label="J" />
+              <q-tab name="friday" label="V" />
+            </q-tabs>
+          </q-card>
+          <q-tab-panels v-model="tabInside" animated>
+            <q-tab-panel class="hour-slot" name="monday">
+              <q-slide-item
+                v-for="(item,index) in personal.luni"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+            <q-tab-panel class="hour-slot" name="tuesday">
+              <q-slide-item
+                v-for="(item,index) in personal.marti"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+            <q-tab-panel class="hour-slot" name="wednesday">
+              <q-slide-item
+                v-for="(item,index) in personal.miercuri"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+
+            <q-tab-panel class="hour-slot" name="friday">
+              <q-slide-item
+                v-for="(item,index) in personal.vineri"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+
+            <q-tab-panel class="hour-slot" name="thursday">
+              <q-slide-item
+                v-for="(item,index) in personal.joi"
+                :key="index"
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{item.subject}}</p>
+                      <p>{{item.shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{item.timeSlot}}</p>
+                      <p>{{item.classRoom}}</p>
+                    </div>
+                    <p>{{item.professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{item.shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="item.hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="item.hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{item.timeSlot}}</p>
+                    <p>{{item.classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
+            </q-tab-panel>
+
+            <q-tab-panel name="tuesday">
+              <div class="text-h6">tuesday</div>Nu ai ore azi.
+            </q-tab-panel>
+
+            <q-tab-panel name="wednesday">
+              <div class="text-h6">wednesday</div>Nu ai ore azi.
+            </q-tab-panel>
+            <q-tab-panel name="thursday">
+              <div class="text-h6">thursday</div>Nu ai ore azi.
+            </q-tab-panel>
+            <q-tab-panel name="friday">
+              <div class="text-h6">friday</div>Nu ai ore azi.
+            </q-tab-panel>
+          </q-tab-panels>
+        </div>
       </q-tab-panel>
     </q-tab-panels>
   </q-page>
 </template>
 
 <style scoped>
-.schedule_tab {
-  margin-bottom: 3%;
-}
 .q-page {
   background-color: #fff;
 }
 
 .q-slide-item {
   width: 100%;
+  margin-bottom: 15px;
   border-radius: 7px;
 }
 .q-slide-item__content {
@@ -241,13 +683,13 @@
 .container {
   width: 100%;
   height: 100%;
-  background-color: #3b1600;
+  background-color: brown;
   display: flex;
   flex-direction: column;
   padding: 0;
   padding: 10px 20px;
   color: #fff;
-  margin-bottom: 10px;
+
   border-radius: 7px;
 }
 .first-top {
@@ -325,14 +767,290 @@ export default {
     return {
       tab: "groupSchedule",
       tabInside: "monday",
-      subject: "Programare Orientata Obiect",
-      timeSlot: "11:00 - 12:30",
-      classRoom: "2011A",
-      hasAssignement: true,
-      professor: "Smeureanu Ion",
-      shortName: "POO",
-      hourType: {
-        type: "curs"
+      group: {
+        luni: [
+          {
+            subject: "Economie",
+            timeSlot: "7:30 - 8:50",
+            classRoom: "2101",
+            hasAssignement: false,
+            professor: "Ion Ionescu",
+            shortName: "Economie",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Bazele Statisticii",
+            timeSlot: "9:00 - 10:20",
+            classRoom: "2101",
+            hasAssignement: false,
+            professor: "Maria Popescu",
+            shortName: "BS",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Bazele Statisticii",
+            timeSlot: "10:30 - 11:50",
+            classRoom: "2502",
+            hasAssignement: true,
+            professor: "Maria Popescu",
+            shortName: "BS",
+            hourType: {
+              type: "seminar"
+            }
+          }
+        ],
+        marti: [
+          {
+            subject: "Bazele Programarii Calculatoarelor",
+            timeSlot: "12:00 - 13:20",
+            classRoom: "2209",
+            hasAssignement: true,
+            professor: "Ion Vasile",
+            shortName: "BPC",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Tehnologiei informatiei",
+            timeSlot: "13:30 - 14:50",
+            classRoom: "2305",
+            hasAssignement: true,
+            professor: "Iulia Matei",
+            shortName: "BTI",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Cercetarilor Operationale",
+            timeSlot: "15:00 - 16:20",
+            classRoom: "2103",
+            hasAssignement: true,
+            professor: "Ana Ionita",
+            shortName: "BCO",
+            hourType: {
+              type: "seminar"
+            }
+          }
+        ],
+        miercuri: [
+          {
+            subject: "Bazele Programarii Calculatoarelor",
+            timeSlot: "12:00 - 13:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Andrei Dumitru",
+            shortName: "BPC",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Economie",
+            timeSlot: "13:30 - 14:50",
+            classRoom: "2621",
+            hasAssignement: true,
+            professor: "Vasile George",
+            shortName: "Economie",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Tehnologiei informatiei",
+            timeSlot: "15:00 - 16:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Marin Grigorescu",
+            shortName: "BTI",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Limba Engleza",
+            timeSlot: "16:30 - 17:50",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Teo Belododia",
+            shortName: "Engleza",
+            hourType: {
+              type: "seminar"
+            }
+          }
+        ],
+        joi: [],
+        vineri: [
+          {
+            subject: "Algebra",
+            timeSlot: "7:30 - 8:50",
+            classRoom: "1208",
+            hasAssignement: false,
+            professor: "Octavian Manescu",
+            shortName: "Algebra",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Algebra",
+            timeSlot: "9:00 - 10:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Octavian Manescu",
+            shortName: "Algebra",
+            hourType: {
+              type: "curs"
+            }
+          }
+        ]
+      },
+      personal: {
+        luni: [
+          {
+            subject: "Economie",
+            timeSlot: "7:30 - 8:50",
+            classRoom: "2101",
+            hasAssignement: false,
+            professor: "Ion Ionescu",
+            shortName: "Economie",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Bazele Statisticii",
+            timeSlot: "9:00 - 10:20",
+            classRoom: "2101",
+            hasAssignement: false,
+            professor: "Maria Popescu",
+            shortName: "BS",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Bazele Statisticii",
+            timeSlot: "10:30 - 11:50",
+            classRoom: "2502",
+            hasAssignement: true,
+            professor: "Maria Popescu",
+            shortName: "BS",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Algebra",
+            timeSlot: "7:30 - 8:50",
+            classRoom: "1208",
+            hasAssignement: false,
+            professor: "Octavian Manescu",
+            shortName: "Algebra",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Algebra",
+            timeSlot: "9:00 - 10:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Octavian Manescu",
+            shortName: "Algebra",
+            hourType: {
+              type: "curs"
+            }
+          }
+        ],
+        marti: [
+          {
+            subject: "Bazele Programarii Calculatoarelor",
+            timeSlot: "12:00 - 13:20",
+            classRoom: "2209",
+            hasAssignement: true,
+            professor: "Ion Vasile",
+            shortName: "BPC",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Tehnologiei informatiei",
+            timeSlot: "13:30 - 14:50",
+            classRoom: "2305",
+            hasAssignement: true,
+            professor: "Iulia Matei",
+            shortName: "BTI",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Cercetarilor Operationale",
+            timeSlot: "15:00 - 16:20",
+            classRoom: "2103",
+            hasAssignement: true,
+            professor: "Ana Ionita",
+            shortName: "BCO",
+            hourType: {
+              type: "seminar"
+            }
+          }
+        ],
+        miercuri: [
+          {
+            subject: "Bazele Programarii Calculatoarelor",
+            timeSlot: "12:00 - 13:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Andrei Dumitru",
+            shortName: "BPC",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Economie",
+            timeSlot: "13:30 - 14:50",
+            classRoom: "2621",
+            hasAssignement: true,
+            professor: "Vasile George",
+            shortName: "Economie",
+            hourType: {
+              type: "seminar"
+            }
+          },
+          {
+            subject: "Bazele Tehnologiei informatiei",
+            timeSlot: "15:00 - 16:20",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Marin Grigorescu",
+            shortName: "BTI",
+            hourType: {
+              type: "curs"
+            }
+          },
+          {
+            subject: "Limba Engleza",
+            timeSlot: "16:30 - 17:50",
+            classRoom: "2201",
+            hasAssignement: false,
+            professor: "Teo Belododia",
+            shortName: "Engleza",
+            hourType: {
+              type: "seminar"
+            }
+          }
+        ],
+        joi: [],
+        vineri: []
       },
       reset: {}
     };
