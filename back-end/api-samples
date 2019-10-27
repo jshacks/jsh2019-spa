@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "ded928c6-927a-4eef-8446-43e83febbfec",
+		"name": "jshacks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:1337/auth/local",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\":\"bisagalexstefan@gmail.com\",\n\t\"password\": \"forever2807\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/auth/local",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"auth",
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/group",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/group",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/activities/subject",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/activities/subject",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"activities",
+						"subject"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/group/schedule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/group/schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"group",
+						"schedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/schedules/personal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/schedules/personal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"schedules",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/auth/local",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"activities\": [\n\t\t{\n\t\t\tactivityId: \"\"\n\t\t},\n\t\t{\n\t\t\t\n\t\t}\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/auth/local",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"auth",
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/activities/prof",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/activities/prof",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"activities",
+						"prof"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/activities/attendance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/activities/attendence/5db45c2602924703c0ec0828/5db433166b473d104cc2c830",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"activities",
+						"attendence",
+						"5db45c2602924703c0ec0828",
+						"5db433166b473d104cc2c830"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/schedules/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"activities\": [\"5db45c2602924703c0ec0828\", \"5db45c4402924703c0ec0829\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/schedules/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"schedules",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/activities/students/5db45c2602924703c0ec0828",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/activities/students/5db45c2602924703c0ec0828",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"activities",
+						"students",
+						"5db45c2602924703c0ec0828"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/schedule/initialize",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/schedules/initialize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"schedules",
+						"initialize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1337/schedules/generate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"busy\": [\n\t\t{\n\t\t\t\"start\":\"12:00\",\n\t\t\t\"end\":\"13:00\"\n\t\t},\n\t\t{\n\t\t\t\"start\":\"13:30\",\n\t\t\t\"end\":\"15:00\"\n\t\t},\n\t\t{\n\t\t\t\"start\":\"12:00\",\n\t\t\t\"end\":\"13:30\"\n\t\t},\n\t\t{\n\t\t\t\"start\":\"16:30\",\n\t\t\t\"end\":\"18:00\"\n\t\t},\n\t\t{\n\t\t\t\"start\":\"9:00\",\n\t\t\t\"end\":\"10:30\"\n\t\t}\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/schedules/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"schedules",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjQzMzE2NmI0NzNkMTA0Y2MyYzgzMCIsImlhdCI6MTU3MjA5MDcwMywiZXhwIjoxNTc0NjgyNzAzfQ.xyDf6JziYQ6-WRi1rxeG02Phi_-06BbX5F-PYnzDyKU",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "595110f2-ccd3-4742-a8e4-c44e75df4a4f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2b263377-f718-412e-9f9c-662a01ba288c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
