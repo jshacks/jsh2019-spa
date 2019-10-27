@@ -2,7 +2,9 @@
   <q-layout view="hHh lpR fFf">
     <q-header class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title class="absolute-center">SPA</q-toolbar-title>
+        <q-toolbar-title class="absolute-center">
+          <img class="logo" src="../assets/logo1.png" />
+        </q-toolbar-title>
         <q-btn
           class="absolute-right"
           @click="$router.push('/login')"
@@ -21,6 +23,10 @@
 
 
 <style>
+.logo {
+  margin-top: 12%;
+  width: 45%;
+}
 .q-btn {
   cursor: pointer;
   box-shadow: none;

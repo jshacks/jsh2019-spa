@@ -9,7 +9,7 @@
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="one">
           <div class="q-pa-md" style="width:100%">
-            <q-list :key="index" v-for="(item,index) in users">
+            <q-list v-show="isSend===false" :key="index" v-for="(item,index) in users">
               <q-slide-item
                 right-color="red-5"
                 @left="(e) => onLeft(e, index)"
@@ -36,16 +36,32 @@
               </q-slide-item>
             </q-list>
           </div>
+          <div class="q-pa-md q-gutter-sm">
+            <q-btn class="Save" color="primary" label="Trimite" />
+          </div>
         </q-tab-panel>
         <q-tab-panel name="two">
-          With so much content to display at once, and often so little screen real-estate,
-          Cards have fast become the design pattern of choice for many companies, including
-          the likes of Google and Twitter.
+          <div class="q-gutter-md row">
+            <q-select
+              filled
+              v-model="seriesLeads"
+              use-input
+              hide-selected
+              fill-input
+              input-debounce="0"
+              :options="options"
+              @filter="filterFn"
+              style="width: 250px; padding-bottom: 32px"
+            >
+              <template v-slot:no-option>
+                <q-item>
+                  <q-item-section class="text-grey">No results</q-item-section>
+                </q-item>
+              </template>
+            </q-select>
+          </div>
         </q-tab-panel>
       </q-tab-panels>
-    </div>
-    <div class="q-pa-md q-gutter-sm">
-      <q-btn class="Save" @click="handleSend" color="primary" label="Trimite" />
     </div>
   </q-page>
 </template>
@@ -93,6 +109,7 @@ export default {
         { name: "Aaaaaa Bbbbbb", present: 0 },
         { name: "Aaaaaa Bbbbbb", present: 0 }
       ],
+      isSend: false,
       seriesLeads: [
         {
           name: "Victor Babes",
@@ -154,7 +171,9 @@ export default {
         reset();
       }, 500);
     },
-    handleSend() {}
+    handleSend() {
+      isSend: true;
+    }
   },
 
   beforeDestroy() {
