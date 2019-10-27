@@ -79,6 +79,52 @@
                   </div>
                 </div>
               </q-slide-item>
+              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{subject}}</p>
+                      <p>{{shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{timeSlot}}</p>
+                      <p>{{classRoom}}</p>
+                    </div>
+                    <p>{{professor}}</p>
+                    <q-btn
+                      @click="back"
+                      flat
+                      round
+                      color="white"
+                      style="padding: 0"
+                      icon="keyboard_arrow_left"
+                    />
+                  </div>
+                </template>
+                <div class="container">
+                  <div class="first-top">
+                    <p>{{shortName}}</p>
+                    <div class="icons-area">
+                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-else outline round color="primary" disable label="S" />
+
+                      <q-btn round v-if="hasAssignement" outline disable label="A" />
+
+                      <q-btn
+                        flat
+                        round
+                        color="white"
+                        style="padding: 0"
+                        icon="keyboard_arrow_right"
+                      />
+                    </div>
+                  </div>
+                  <div class="second-top">
+                    <p>{{timeSlot}}</p>
+                    <p>{{classRoom}}</p>
+                  </div>
+                </div>
+              </q-slide-item>
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">

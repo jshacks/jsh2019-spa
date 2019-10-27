@@ -15,60 +15,48 @@
 
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="groupSchedule">
-        <div class="schedule-slot">
-          <q-card class="my-card"></q-card>
-          <q-tab-panels v-model="tabInside" animated>
-            <q-tab-panel class="hour-slot" name="monday">
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
-                <template v-slot:right>
-                  <div class="more-info">
-                    <p>{{ subject }}</p>
-                    <p>{{ professor }}</p>
-                    <p>{{ timeSlot }}</p>
-                    <p>{{ classRoom }}</p>
-                  </div>
-                </template>
-                <div class="container">
-                  <div class="first-top">
-                    <p>{{ subject }}</p>
-                    <div class="icons-area">
-                      <q-btn v-if="hourType.type === 'curs'" outline round disable label="C" />
-                      <q-btn v-else outline round color="primary" disable label="S" />
-
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                      <q-btn
-                        flat
-                        round
-                        color="white"
-                        style="padding: 0"
-                        icon="keyboard_arrow_right"
-                      />
-                    </div>
-                  </div>
-                  <div class="second-top">
-                    <p>{{ timeSlot }}</p>
-                    <p>{{ classRoom }}</p>
-                  </div>
+        <q-expansion-item expand-separator label="Luni">
+          <q-slide-item>
+            <template style="width: 100%;" v-slot:right>
+              <div class="row items-center">
+                <div style="margin-right: 10px; font-weight:bold;">
+                  <p>{{subject}}</p>
+                  <p>{{shortName}}</p>
                 </div>
-              </q-slide-item>
-            </q-tab-panel>
+                <div style="margin-right: 15px; ">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+                <p>{{professor}}</p>
+                <q-btn
+                  @click="back"
+                  flat
+                  round
+                  color="white"
+                  style="padding: 0"
+                  icon="keyboard_arrow_left"
+                />
+              </div>
+            </template>
+            <div class="container">
+              <div class="first-top">
+                <p>{{shortName}}</p>
+                <div class="icons-area">
+                  <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                  <q-btn v-else outline round color="primary" disable label="S" />
 
-            <q-tab-panel name="tuesday">
-              <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </q-tab-panel>
+                  <q-btn round v-if="hasAssignement" outline disable label="A" />
 
-            <q-tab-panel name="wednesday">
-              <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </q-tab-panel>
-            <q-tab-panel name="thursday">
-              <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </q-tab-panel>
-            <q-tab-panel name="friday">
-              <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </q-tab-panel>
-          </q-tab-panels>
-        </div>
+                  <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
+                </div>
+              </div>
+              <div class="second-top">
+                <p>{{timeSlot}}</p>
+                <p>{{classRoom}}</p>
+              </div>
+            </div>
+          </q-slide-item>
+        </q-expansion-item>
       </q-tab-panel>
 
       <q-tab-panel name="personalSchedule">
@@ -94,12 +82,15 @@
   padding: 0 10px;
 }
 
+.container {
+  margin-bottom: 10px;
+}
+
 .q-tab-panel {
   padding: 16px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
   background: #fff;
 }
 .q-card {
@@ -197,11 +188,12 @@ export default {
     return {
       tab: "groupSchedule",
       tabInside: "monday",
-      subject: "POO",
+      subject: "Programare Orientata Obiect",
       timeSlot: "11:00 - 12:30",
       classRoom: "2011A",
       hasAssignement: true,
       professor: "Smeureanu Ion",
+      shortName: "POO",
       hourType: {
         type: "curs"
       }
