@@ -201,7 +201,7 @@
   padding: 0;
   padding: 10px 20px;
   color: #fff;
-
+  margin-bottom: 10px;
   border-radius: 7px;
 }
 .first-top {
