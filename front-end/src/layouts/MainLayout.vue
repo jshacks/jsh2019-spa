@@ -32,7 +32,9 @@
   border-radius: 5%;
   font-size: 2em;
 }
-
+img {
+  left: 50%;
+}
 .fixed-top {
   height: 10%;
   top: 0;
