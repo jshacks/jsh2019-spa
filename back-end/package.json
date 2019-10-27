@@ -1,19 +1,38 @@
 {
-  "name": "training-node",
-  "version": "1.0.0",
-  "description": "",
+  "name": "spa",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
   "scripts": {
-    "start": "node server2.js",
-    "part1": "node server0.js",
-    "part2": "node server1.js",
-    "part3": "node server2.js"
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
   },
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {},
   "dependencies": {
-    "body-parser": "1.18.3",
-    "express": "4.16.4",
-    "mysql2": "1.6.4",
-    "sequelize": "4.42.0"
-  }
+    "strapi": "3.0.0-beta.17.4",
+    "strapi-admin": "3.0.0-beta.17.4",
+    "strapi-utils": "3.0.0-beta.17.4",
+    "strapi-plugin-content-type-builder": "3.0.0-beta.17.4",
+    "strapi-plugin-content-manager": "3.0.0-beta.17.4",
+    "strapi-plugin-users-permissions": "3.0.0-beta.17.4",
+    "strapi-plugin-email": "3.0.0-beta.17.4",
+    "strapi-plugin-upload": "3.0.0-beta.17.4",
+    "strapi-hook-bookshelf": "3.0.0-beta.17.4",
+    "strapi-hook-knex": "3.0.0-beta.17.4",
+    "knex": "latest",
+    "sqlite3": "latest"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "30f17382-8e61-4d2e-ba0b-a863528878a8"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }

@@ -9,49 +9,30 @@
       narrow-indicator
     >
       <q-tab name="groupSchedule" label="Group" />
-      <q-tab name="personalSchedule" label="Personal" />
+      <q-tab name="chooseSchedule" label="Choose" />
+      <q-tab name="finalSchedule" label="Final" />
     </q-tabs>
 
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="groupSchedule">
         <div class="schedule-slot">
-          <q-card class="my-card">
-            <q-tabs
-              v-model="tabInside"
-              class="text-grey week-tabs"
-              active-color="primary"
-              indicator-color="primary"
-              align="justify"
-              narrow-indicator
-            >
-              <q-tab name="monday" label="L" />
-              <q-tab name="tuesday" label="M" />
-              <q-tab name="wednesday" label="M" />
-              <q-tab name="thursday" label="J" />
-              <q-tab name="friday" label="V" />
-            </q-tabs>
-          </q-card>
+          <q-card class="my-card"></q-card>
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
-              <q-slide-item
-                class="schedule_tab"
-                @left="onLeft"
-                @right="onRight"
-                right-color="deep-orange-3 "
-              >
+              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
                 <template v-slot:right>
                   <div class="more-info">
-                    <p>{{subject}}</p>
-                    <p>{{professor}}</p>
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+                    <p>{{ subject }}</p>
+                    <p>{{ professor }}</p>
+                    <p>{{ timeSlot }}</p>
+                    <p>{{ classRoom }}</p>
                   </div>
                 </template>
                 <div class="container">
                   <div class="first-top">
-                    <p>{{subject}}</p>
+                    <p>{{ subject }}</p>
                     <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
+                      <q-btn v-if="hourType.type === 'curs'" outline round disable label="C" />
                       <q-btn v-else outline round color="primary" disable label="S" />
 
                       <q-btn round v-if="hasAssignement" outline disable label="A" />
@@ -66,55 +47,8 @@
                     </div>
                   </div>
                   <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                </div>
-              </q-slide-item>
-
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
-                <template style="width: 100%;" v-slot:right>
-                  <div class="row items-center">
-                    <div style="margin-right: 10px; font-weight:bold;">
-                      <p>{{subject}}</p>
-                      <p>{{shortName}}</p>
-                    </div>
-                    <div style="margin-right: 15px; ">
-                      <p>{{timeSlot}}</p>
-                      <p>{{classRoom}}</p>
-                    </div>
-                    <p>{{professor}}</p>
-                    <q-btn
-                      @click="back"
-                      flat
-                      round
-                      color="white"
-                      style="padding: 0"
-                      icon="keyboard_arrow_left"
-                    />
-                  </div>
-                </template>
-                <div class="container">
-                  <div class="first-top">
-                    <p>{{shortName}}</p>
-                    <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                      <q-btn v-else outline round color="primary" disable label="S" />
-
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                      <q-btn
-                        flat
-                        round
-                        color="white"
-                        style="padding: 0"
-                        icon="keyboard_arrow_right"
-                      />
-                    </div>
-                  </div>
-                  <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+                    <p>{{ timeSlot }}</p>
+                    <p>{{ classRoom }}</p>
                   </div>
                 </div>
               </q-slide-item>
@@ -145,19 +79,12 @@
 </template>
 
 <style scoped>
-.schedule_tab {
-  margin-bottom: 3%;
-}
 .q-page {
   background-color: #fff;
 }
 
 .q-slide-item {
   width: 100%;
-  border-radius: 7px;
-}
-.q-slide-item__content {
-  background: transparent;
 }
 .q-tabs {
   width: 100%;
@@ -195,7 +122,7 @@
 .container {
   width: 100%;
   height: 100%;
-  background-color: #3b1600;
+  background-color: brown;
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -258,20 +185,11 @@
   margin-bottom: 3px;
   width: 100%;
 }
-
-.q-slide-item__right > div {
-  transform-origin: right center;
-  width: 100% !important;
-  height: 100%;
-}
-.items-center p {
-  margin: 0;
-}
 </style>
 
 <script>
 export default {
-  name: "PageIndex",
+  name: "Configurator",
   mounted() {
     this.$store.dispatch("promoData/initStore");
   },
@@ -279,16 +197,14 @@ export default {
     return {
       tab: "groupSchedule",
       tabInside: "monday",
-      subject: "Programare Orientata Obiect",
+      subject: "POO",
       timeSlot: "11:00 - 12:30",
       classRoom: "2011A",
       hasAssignement: true,
       professor: "Smeureanu Ion",
-      shortName: "POO",
       hourType: {
         type: "curs"
-      },
-      reset: {}
+      }
     };
   },
   computed: {
@@ -303,15 +219,16 @@ export default {
     }
   },
   methods: {
-    back() {
-      this.reset();
-    },
     onLeft({ reset }) {
       this.finalize(reset);
     },
 
-    onRight({ reset }) {
-      this.reset = reset;
+    onRight({ reset }) {},
+
+    finalize(reset) {
+      this.timer = setTimeout(() => {
+        reset();
+      }, 1000);
     }
   }
 };

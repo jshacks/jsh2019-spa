@@ -4,7 +4,7 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "/attendance", component: () => import("pages/Attendance.vue") },
-      { path: "/student", component: () => import("pages/BasicStudent.vue") },
+      { path: "/", component: () => import("pages/BasicStudent.vue") },
       { path: "/group", component: () => import("pages/GroupLead.vue") },
       { path: "/series", component: () => import("pages/SeriesLead.vue") }
     ]
@@ -13,6 +13,11 @@ const routes = [
     path: "/login",
     component: () => import("layouts/AuthLayout.vue"),
     children: [{ path: "", component: () => import("pages/LoginPage.vue") }]
+  },
+  {
+    path: "/configure",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/Configurator.vue") }]
   }
 ];
 

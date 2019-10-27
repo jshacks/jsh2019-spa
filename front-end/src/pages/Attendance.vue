@@ -47,7 +47,6 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
-    
   </q-page>
 </template>
 
@@ -93,6 +92,28 @@ export default {
         { name: "Aaaaaa Bbbbbb", present: 0 },
         { name: "Aaaaaa Bbbbbb", present: 0 },
         { name: "Aaaaaa Bbbbbb", present: 0 }
+      ],
+      seriesLeads: [
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        },
+        {
+          name: "Victor Babes",
+          group: "1077"
+        }
       ]
     };
   },
@@ -132,7 +153,8 @@ export default {
       this.timer = setTimeout(() => {
         reset();
       }, 500);
-    }
+    },
+    handleSend() {}
   },
 
   beforeDestroy() {
