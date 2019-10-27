@@ -9,7 +9,7 @@
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="one">
           <div class="q-pa-md" style="width:100%">
-            <q-list v-show="isSend===false" :key="index" v-for="(item,index) in users">
+            <q-list :key="index" v-for="(item,index) in users">
               <q-slide-item
                 right-color="red-5"
                 @left="(e) => onLeft(e, index)"

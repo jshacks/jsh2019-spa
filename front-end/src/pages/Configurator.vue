@@ -180,7 +180,7 @@
 
 <script>
 export default {
-  name: "Configurator",
+  name: "config",
   mounted() {
     this.$store.dispatch("promoData/initStore");
   },
