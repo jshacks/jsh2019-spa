@@ -49,7 +49,7 @@ module.exports = {
         if(ctx.request.body.activities && Array.isArray(ctx.request.body.activities)) {
             const activities = [];
             ctx.request.body.activities.forEach(activity => {
-                activities.push({userId: ctx.state.user._id, activityId: activity});
+                activities.push({userId: ctx.state.user._id, activityId: activity, user: ctx.state.user._id});
             })
             await Schedule.create(activities);
             ctx.body = {message: "Updated"};
@@ -58,5 +58,8 @@ module.exports = {
             ctx.body = {message: "Bad Request"};
             return;
         }
+    },
+    generate: async (ctx) => {
+        ctx.body = "yas"
     }
 };

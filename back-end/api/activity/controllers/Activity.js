@@ -1,7 +1,10 @@
 'use strict';
-const groupArray = require('group-array');
 const _ = require('lodash');
 const checkIfToday = require('../services/Activity').checkIfToday;
+const padEnd = require('../../group/services/Group').padEnd;
+const mapDto = require("../services/Activity").mapDto;
+const sortByDay = require('../services/Activity').sortByDay;
+
 /**
  * Read the documentation () to implement custom controller functions
  */
@@ -15,10 +18,6 @@ module.exports = {
             subject: subjectsList
         });
 
-        //sort
-        //group
-        //format start: end
-
         const availableActivities = [];
         for(let i = 0; i < activities.length; i++){
             const activity = activities[i];
@@ -28,9 +27,26 @@ module.exports = {
             }
         }
 
-        const grouped = _.groupBy(availableActivities, function(ob) {
+        const mapper = mapDto(availableActivities);
+        const sorted = _.sortBy(mapper, ["start"]);
+        sorted.sort(sortByDay);
+        const grouped = _.groupBy(sorted, function(ob) {
             return ob.subject;
         });
+
+        Object.keys(grouped).map(day => {
+            grouped[day].forEach(activity => {
+                activity.start = padEnd(activity.start)
+                activity.end = padEnd(activity.end);
+            })
+        });
+
+        _.forEach(grouped, (value, key) => {
+            grouped[key] = _.groupBy(grouped[key], (item) => {
+                console.log(item);
+                return item.type;
+            })
+        })
 
         ctx.body = {activities: grouped}
     },
@@ -38,23 +54,42 @@ module.exports = {
         const fullname = ctx.state.user.firstname + " " + ctx.state.user.lastname;
         const activities = await Activity.find({prof: fullname});
 
-        const sorted = _.sortBy(activities, ["start"])
+        const mapper = mapDto(activities);
+        const sorted = _.sortBy(mapper, ["start"])
         const grouped = _.groupBy(sorted, function(ob) {
             return ob.day;
         });
 
+        Object.keys(grouped).map(day => {
+            grouped[day].forEach(activity => {
+                activity.start = padEnd(activity.start)
+                activity.end = padEnd(activity.end);
+            })
+        })
+
         ctx.body = {activities: grouped};
     },
     getStudents: async (ctx) => {
-        //incomplete
+        const today = new Date(new Date().setHours(0, 0, 0, 0));
+        const attendences = await Attendence.find({activityId: ctx.params.activityId, createdAt: {$gte: today}});
         const schedules = await Schedule.find({activityId: ctx.params.activityId});
-        const students = await User.find().where({
+        const students = await strapi.plugins["users-permissions"].models.user.find({
             _id: schedules.map(schedule => schedule.userId)
-        })
+        });
 
-        console.log(students);
+        const enrichedStudents = 
+            students.map(student => {
+                const enrichedStudent = { firstname: student.firstname, lastname: student.lastname, isPresent: false };
+                const attendence = attendences.filter(attendence => attendence.userId == student._id).length;
 
-        ctx.body = "yas"
+                if(attendence) {
+                    enrichedStudent.isPresent = true;
+                }
+
+                return enrichedStudent;
+        });
+
+        ctx.body = {students: enrichedStudents}   
     },
     studentAttendence: async (ctx) => {
         const attendence = await Attendence.findOne({userId: ctx.params.userId, activityId: ctx.params.activityId, profId: ctx.state.user._id});

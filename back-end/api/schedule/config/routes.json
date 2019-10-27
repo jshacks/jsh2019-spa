@@ -34,6 +34,14 @@
     },
     {
       "method": "GET",
+      "path": "/schedules/generate",
+      "handler": "Schedule.generate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/schedules/:id",
       "handler": "Schedule.findOne",
       "config": {
