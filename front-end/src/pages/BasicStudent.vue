@@ -167,17 +167,17 @@
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">
-              <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">tuesday</div>
             </q-tab-panel>
 
             <q-tab-panel name="wednesday">
-              <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">wednesday</div>
             </q-tab-panel>
             <q-tab-panel name="thursday">
-              <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">thursday</div>
             </q-tab-panel>
             <q-tab-panel name="friday">
-              <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">friday</div>
             </q-tab-panel>
           </q-tab-panels>
         </div>
