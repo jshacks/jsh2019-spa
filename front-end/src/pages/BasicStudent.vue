@@ -33,22 +33,25 @@
           </q-card>
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
-              <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
+              <q-slide-item
+                @left="onLeft"
+                @right="onRight"
+                right-color="deep-orange-3 "
+              >
                 <template style="width: 100%;" v-slot:right>
                   <div class="row items-center">
                     <div style="margin-right: 10px; font-weight:bold;">
-                      <p>{{subject}}</p>
-                      <p>{{shortName}}</p>
+                      <p>{{ subject }}</p>
+                      <p>{{ shortName }}</p>
                     </div>
                     <div style="margin-right: 15px; ">
-                      <p>{{timeSlot}}</p>
-                      <p>{{classRoom}}</p>
+                      <p>{{ timeSlot }}</p>
+                      <p>{{ classRoom }}</p>
                     </div>
-                    <p>{{professor}}</p>
-<<<<<<< HEAD
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-=======
+                    <p>{{ professor }}</p>
+
+                    <p>{{ timeSlot }}</p>
+                    <p>{{ classRoom }}</p>
 
                     <q-btn
                       @click="back"
@@ -58,17 +61,35 @@
                       style="padding: 0"
                       icon="keyboard_arrow_left"
                     />
->>>>>>> 41de2503fbc050c78974a629e8ac41191514d8c7
                   </div>
                 </template>
                 <div class="container">
                   <div class="first-top">
-                    <p>{{shortName}}</p>
+                    <p>{{ shortName }}</p>
                     <div class="icons-area">
-                      <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                      <q-btn v-else outline round color="primary" disable label="S" />
+                      <q-btn
+                        v-if="hourType.type === 'curs'"
+                        outline
+                        round
+                        disable
+                        label="C"
+                      />
+                      <q-btn
+                        v-else
+                        outline
+                        round
+                        color="primary"
+                        disable
+                        label="S"
+                      />
 
-                      <q-btn round v-if="hasAssignement" outline disable label="A" />
+                      <q-btn
+                        round
+                        v-if="hasAssignement"
+                        outline
+                        disable
+                        label="A"
+                      />
 
                       <q-btn
                         flat
@@ -80,32 +101,37 @@
                     </div>
                   </div>
                   <div class="second-top">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+                    <p>{{ timeSlot }}</p>
+                    <p>{{ classRoom }}</p>
                   </div>
                 </div>
               </q-slide-item>
             </q-tab-panel>
 
             <q-tab-panel name="tuesday">
-              <div class="text-h6">tuesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">tuesday</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
 
             <q-tab-panel name="wednesday">
-              <div class="text-h6">wednesday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">wednesday</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
             <q-tab-panel name="thursday">
-              <div class="text-h6">thursday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">thursday</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
             <q-tab-panel name="friday">
-              <div class="text-h6">friday</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div class="text-h6">friday</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </q-tab-panel>
           </q-tab-panels>
         </div>
       </q-tab-panel>
 
       <q-tab-panel name="personalSchedule">
-        <div class="text-h6">Alarms</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <div class="text-h6">Alarms</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </q-tab-panel>
     </q-tab-panels>
   </q-page>
