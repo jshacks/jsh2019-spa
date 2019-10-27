@@ -2,16 +2,24 @@
   <q-page>
     <div v-if="!isClicked" class="container1">
       <h5>Selecteaza intervalul orar in care esti disponibil</h5>
-      <q-badge color="secondary">Luni: {{ basicModel }}</q-badge>
-      <q-slider v-model="basicModel" markers :min="7.30" :max="19.30" :step="1.20" />
-      <q-badge color="secondary">Marti: {{ basicModel }}</q-badge>
-      <q-slider v-model="basicModel" markers :min="7.30" :max="19.30" :step="1.20" />
-      <q-badge color="secondary">Miercuri: {{ basicModel }}</q-badge>
-      <q-slider v-model="basicModel" markers :min="7.30" :max="19.30" :step="1.20" />
-      <q-badge color="secondary">Joi: {{ basicModel }}</q-badge>
-      <q-slider v-model="basicModel" markers :min="7.30" :max="19.30" :step="1.20" />
-      <q-badge color="secondary">Vineri: {{ basicModel }}</q-badge>
-      <q-slider v-model="basicModel" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-badge color="secondary">Luni</q-badge>
+      <q-slider v-model="x1" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-slider v-model="y1" markers :min="7.30" :max="19.30" :step="1.20" />
+
+      <q-badge color="secondary">Marti</q-badge>
+      <q-slider v-model="x2" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-slider v-model="y2" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-badge color="secondary">Miercuri</q-badge>
+      <q-slider v-model="x3" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-slider v-model="y3" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-badge color="secondary">Joi</q-badge>
+      <q-slider v-model="x4" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-slider v-model="y4" markers :min="7.30" :max="19.30" :step="1.20" />
+      <q-badge color="secondary">Vineri</q-badge>
+      {{x5}}
+      <q-slider v-model="x5" markers :min="7.30" :max="19.30" :step="1.20" />
+      {{y5}}
+      <q-slider v-model="y5" markers :min="7.30" :max="19.30" :step="1.20" />
       <q-btn
         color="primary"
         style="padding-left: 10px; padding-right: 10px;"
@@ -37,38 +45,10 @@
         <q-tab-panel name="groupSchedule">
           <q-expansion-item expand-separator label="Luni">
             <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
-                </div>
-              </template>
-              <div class="container">
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
-
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
+                  <p>{{professor}}</p>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -80,38 +60,10 @@
 
           <q-expansion-item expand-separator label="Marti">
             <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
-                </div>
-              </template>
-              <div class="container">
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
-
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
+                  <p>{{professor}}</p>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -123,38 +75,10 @@
 
           <q-expansion-item expand-separator label="Miercuri">
             <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
-                </div>
-              </template>
-              <div class="container">
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
-
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
+                  <p>{{professor}}</p>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -166,38 +90,10 @@
 
           <q-expansion-item expand-separator label="Joi">
             <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
-                </div>
-              </template>
-              <div class="container">
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
-
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
+                  <p>{{professor}}</p>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -209,39 +105,10 @@
 
           <q-expansion-item expand-separator label="Vineri">
             <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
-                </div>
-              </template>
-              <div class="container">
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
                   <p>{{professor}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
-
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
-
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -253,40 +120,151 @@
         </q-tab-panel>
 
         <q-tab-panel name="chooseSchedule">
-          <q-expansion-item expand-separator :label="shortName">
-            <q-slide-item>
-              <template style="width: 100%;" v-slot:right>
-                <div class="row items-center">
-                  <div style="margin-right: 10px; font-weight:bold;">
-                    <p>{{subject}}</p>
-                    <p>{{shortName}}</p>
-                  </div>
-                  <div style="margin-right: 15px; ">
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
-                  </div>
-                  <p>{{professor}}</p>
-                  <q-btn
-                    @click="back"
-                    flat
-                    round
-                    color="white"
-                    style="padding: 0"
-                    icon="keyboard_arrow_left"
-                  />
+          <q-expansion-item
+            :key="index"
+            v-for="(element,index) in list"
+            expand-separator
+            :label="element.shortName"
+          >
+            <q-slide-item :key="index" v-for="(item,index) in element.subjectList">
+              <div class="container-schedule">
+                <div class="first-top">
+                  <p>{{element.shortName}}</p>
+                  <p>{{item.professor}}</p>
                 </div>
-              </template>
-              <div class="container">
+                <div class="second-top">
+                  <p>{{item.timeSlot}}</p>
+                  <div class="q-gutter-sm">
+                    <q-radio dense v-model="item.shape" val="da" color="cyan" label="Da" />
+                    <q-radio dense v-model="item.shape" val="nu" color="cyan" label="Nu" />
+                  </div>
+                  <p>{{item.classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
+          <!-- <q-expansion-item expand-separator :label="shortNameCTS">
+            <q-slide-item :key="index" v-for="(item,index) in subjectListCTS">
+              <div class="container-schedule">
+                <div class="first-top">
+                  <p>{{shortNameCTS}}</p>
+                  <p>{{item.professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{item.timeSlot}}</p>
+                  <div class="q-gutter-sm">
+                    <q-radio dense v-model="shapeCTS" val="da" color="cyan" label="Da" />
+                    <q-radio dense v-model="shapeCTS" val="nu" color="cyan" label="Nu" />
+                  </div>
+                  <p>{{item.classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
+          <q-expansion-item expand-separator :label="shortNameATP">
+            <q-slide-item :key="index" v-for="(item,index) in subjectListATP">
+              <div class="container-schedule">
+                <div class="first-top">
+                  <p>{{shortNameATP}}</p>
+                  <p>{{item.professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{item.timeSlot}}</p>
+                  <div class="q-gutter-sm">
+                    <q-radio dense v-model="shapeATP" val="da" color="cyan" label="Da" />
+                    <q-radio dense v-model="shapeATP" val="nu" color="cyan" label="Nu" />
+                  </div>
+                  <p>{{item.classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
+          <q-expansion-item expand-separator :label="shortNameEconomie">
+            <q-slide-item v-for="(item,index) in subjectsListEconomie" :key="index">
+              <div class="container-schedule">
+                <div class="first-top">
+                  <p>{{shortNameEconomie}}</p>
+                  <p>{{item.professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{item.timeSlot}}</p>
+                  <div class="q-gutter-sm">
+                    <q-radio dense v-model="shapeECO" val="da" color="cyan" label="Da" />
+                    <q-radio dense v-model="shapeECO" val="nu" color="cyan" label="Nu" />
+                  </div>
+                  <p>{{item.classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>-->
+        </q-tab-panel>
+        <q-tab-panel name="finalSchedule">
+          <q-expansion-item expand-separator label="Luni">
+            <q-slide-item>
+              <div class="container-group">
                 <div class="first-top">
                   <p>{{shortName}}</p>
-                  <div class="icons-area">
-                    <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
-                    <q-btn v-else outline round color="primary" disable label="S" />
+                  <p>{{professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
 
-                    <q-btn round v-if="hasAssignement" outline disable label="A" />
+          <q-expansion-item expand-separator label="Marti">
+            <q-slide-item>
+              <div class="container-group">
+                <div class="first-top">
+                  <p>{{shortName}}</p>
+                  <p>{{professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
 
-                    <q-btn flat round color="white" style="padding: 0" icon="keyboard_arrow_right" />
-                  </div>
+          <q-expansion-item expand-separator label="Miercuri">
+            <q-slide-item>
+              <div class="container-group">
+                <div class="first-top">
+                  <p>{{shortName}}</p>
+                  <p>{{professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
+
+          <q-expansion-item expand-separator label="Joi">
+            <q-slide-item>
+              <div class="container-group">
+                <div class="first-top">
+                  <p>{{shortName}}</p>
+                  <p>{{professor}}</p>
+                </div>
+                <div class="second-top">
+                  <p>{{timeSlot}}</p>
+                  <p>{{classRoom}}</p>
+                </div>
+              </div>
+            </q-slide-item>
+          </q-expansion-item>
+
+          <q-expansion-item expand-separator label="Vineri">
+            <q-slide-item>
+              <div class="container-group">
+                <div class="first-top">
+                  <p>{{shortName}}</p>
+                  <p>{{professor}}</p>
                 </div>
                 <div class="second-top">
                   <p>{{timeSlot}}</p>
@@ -357,16 +335,28 @@
 .q-card > div {
   margin-top: 0;
 }
-.container {
+.container-group {
   width: 100%;
   height: 100%;
-  background-color: brown;
+  background-color: #1479c7;
   display: flex;
   flex-direction: column;
   padding: 0;
   padding: 10px 20px;
   color: #fff;
-
+  margin-bottom: 15px;
+  border-radius: 7px;
+}
+.container-schedule {
+  width: 100%;
+  height: 100%;
+  background-color: #c94328;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding: 10px 20px;
+  color: #fff;
+  margin-bottom: 15px;
   border-radius: 7px;
 }
 .first-top {
@@ -447,13 +437,125 @@ export default {
       timeSlot: "11:00 - 12:30",
       classRoom: "2011A",
       hasAssignement: true,
-      professor: "Smeureanu Ion",
-      shortName: "POO",
+      professor: "George Vasile",
+      shortNamePOO: "POO",
+      shortNameEconomie: "Economie",
+      shortNameCTS: "CTS",
+      shortNameATP: "ATP",
       basicModel: 2,
       hourType: {
         type: "curs"
       },
-      isClicked: false
+      isClicked: false,
+      list: [
+        {
+          shortName: "POO",
+
+          subjectList: [
+            {
+              timeSlot: "07:30 - 08:50",
+              professor: "Mihai Mih",
+              classRoom: "2011A",
+              shape: ""
+            },
+            {
+              timeSlot: "12:00 - 13:30",
+              professor: "George Vasile",
+              classRoom: "2011D",
+              shape: ""
+            },
+            {
+              timeSlot: "12:00 - 13:30",
+              professor: "Vasile Andrei",
+              classRoom: "2112",
+              shape: ""
+            },
+            {
+              timeSlot: "09:00 - 10:20",
+              professor: "Mihai Ionescu",
+              classRoom: "2202",
+              shape: ""
+            }
+          ]
+        }
+      ],
+
+      subjectsListEconomie: [
+        {
+          shortName: "Economie",
+          timeSlot: "10:30 - 11:50",
+          professor: "Ion Andrei",
+          classRoom: "2213",
+          shapeECO: ""
+        },
+        {
+          shortName: "Economie",
+          timeSlot: "15:0 - 16:20",
+          professor: "Marian Serban",
+          classRoom: "8102",
+          shapeECO: ""
+        }
+      ],
+      subjectListCTS: [
+        {
+          shortName: "CTS",
+          timeSlot: "09:00 - 10:20",
+          professor: "Andrei Ion",
+          classRoom: "2011A",
+          shapeCTS: ""
+        },
+        {
+          shortName: "CTS",
+          timeSlot: "10:30 - 12:00",
+          professor: "Mihai Vasile",
+          classRoom: "2011D",
+          shapeCTS: ""
+        },
+        {
+          shortName: "CTS",
+          timeSlot: "12:00 - 13:30",
+          professor: "Ion Claudiu",
+          classRoom: "2112",
+          shapeCTS: ""
+        },
+        {
+          shortName: "CTS",
+          timeSlot: "09:00 - 10:20",
+          professor: "Denisa Serban",
+          classRoom: "2202",
+          shapeCTS: ""
+        },
+        {
+          shortName: "CTS",
+          timeSlot: "18:00 - 19:20",
+          professor: "Mihai Vasile",
+          classRoom: "2011D",
+          shapeCTS: ""
+        }
+      ],
+      subjectListATP: [
+        {
+          shortName: "ATP",
+          timeSlot: "07:30 - 08:50",
+          professor: "Smeureanu Ion",
+          classRoom: "2011A",
+          shapeATP: ""
+        },
+        {
+          shortName: "ATP",
+          timeSlot: "09:00 - 10:20",
+          professor: "Mihai Vasile",
+          classRoom: "2011D",
+          shapeATP: ""
+        },
+        {
+          shortName: "ATP",
+          timeSlot: "12:00 - 13:20",
+          professor: "Ion Claudiu",
+          classRoom: "2112",
+          shapeATP: ""
+        }
+      ]
     };
   },
   computed: {

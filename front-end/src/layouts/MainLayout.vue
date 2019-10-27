@@ -46,8 +46,8 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  border-bottom-left-radius: 30%;
-  border-bottom-right-radius: 30%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,8 +68,8 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
   }
   .logo {
     width: 10%;

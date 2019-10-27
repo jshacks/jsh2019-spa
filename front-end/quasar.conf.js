@@ -58,7 +58,8 @@ module.exports = function(ctx) {
         "QInput",
         "QSlideItem",
         "QSlider",
-        "QBadge"
+        "QBadge",
+        "QRadio"
       ],
 
       directives: ["Ripple"],
