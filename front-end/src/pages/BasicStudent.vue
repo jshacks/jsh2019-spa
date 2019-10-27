@@ -45,7 +45,6 @@
                       <p>{{classRoom}}</p>
                     </div>
                     <p>{{professor}}</p>
-
                     <q-btn
                       @click="back"
                       flat
