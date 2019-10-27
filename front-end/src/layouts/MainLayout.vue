@@ -25,7 +25,7 @@
 <style>
 .logo {
   margin-top: 12%;
-  width: 45%;
+  width: 30%;
 }
 .q-btn {
   cursor: pointer;
@@ -56,8 +56,13 @@ img {
     ##Device = Laptops, Desktops
     ##Screen = B/w 1025px to 1280px
   */
-
-@media (min-width: 1025px) {
+@media (min-width: 650px) {
+  .logo {
+    width: 20%;
+    margin-top: 5%;
+  }
+}
+@media (min-width: 1000px) {
   .fixed-top {
     height: 10%;
     top: 0;
@@ -65,6 +70,10 @@ img {
     right: 0;
     border-bottom-left-radius: 30%;
     border-bottom-right-radius: 30%;
+  }
+  .logo {
+    width: 10%;
+    margin-top: 3%;
   }
 }
 
