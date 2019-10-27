@@ -34,12 +34,18 @@
           <q-tab-panels v-model="tabInside" animated>
             <q-tab-panel class="hour-slot" name="monday">
               <q-slide-item @left="onLeft" @right="onRight" right-color="deep-orange-3 ">
-                <template v-slot:right>
-                  <div class="more-info">
-                    <p>{{subject}}</p>
+                <template style="width: 100%;" v-slot:right>
+                  <div class="row items-center">
+                    <div style="margin-right: 10px; font-weight:bold;">
+                      <p>{{subject}}</p>
+                      <p>{{shortName}}</p>
+                    </div>
+                    <div style="margin-right: 15px; ">
+                      <p>{{timeSlot}}</p>
+                      <p>{{classRoom}}</p>
+                    </div>
                     <p>{{professor}}</p>
-                    <p>{{timeSlot}}</p>
-                    <p>{{classRoom}}</p>
+
                     <q-btn
                       @click="back"
                       flat
@@ -52,7 +58,7 @@
                 </template>
                 <div class="container">
                   <div class="first-top">
-                    <p>{{subject}}</p>
+                    <p>{{shortName}}</p>
                     <div class="icons-area">
                       <q-btn v-if="hourType.type ==='curs'" outline round disable label="C" />
                       <q-btn v-else outline round color="primary" disable label="S" />
@@ -211,6 +217,15 @@
   margin-bottom: 3px;
   width: 100%;
 }
+
+.q-slide-item__right > div {
+  transform-origin: right center;
+  width: 100% !important;
+  height: 100%;
+}
+.items-center p {
+  margin: 0;
+}
 </style>
 
 <script>
@@ -223,11 +238,12 @@ export default {
     return {
       tab: "groupSchedule",
       tabInside: "monday",
-      subject: "POO",
+      subject: "Programare Orientata Obiect",
       timeSlot: "11:00 - 12:30",
       classRoom: "2011A",
       hasAssignement: true,
       professor: "Smeureanu Ion",
+      shortName: "POO",
       hourType: {
         type: "curs"
       },
